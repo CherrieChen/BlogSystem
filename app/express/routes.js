@@ -1,6 +1,6 @@
 //'use strict';
 var express = require('express');
-var route = express.Router();
+var expressRouter = express.Router();
 var fs = require('fs');
 var path = require('path');
 var cfgUtil = require('./../server/commons/factories/configuration');
@@ -12,7 +12,7 @@ var EXCLUDE_ROUTER_MODULE = serverCfg.router.EXCLUDE_MODULE || [];
 	var fileNameParser = path.parse(file);
 	if(fileNameParser.ext === '.js') {
 		if(EXCLUDE_ROUTER_MODULE.indexOf(fileNameParser.name) === -1) {
-			require(path.join(ROUTES_PATH, file))(route);
+			require(path.join(ROUTES_PATH, file))(expressRouter);
 		}
 	}
 });
