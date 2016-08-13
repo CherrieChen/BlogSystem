@@ -3,7 +3,7 @@
 const fs = require('fs');
 const log4js = require('log4js');
 
-const SERVER_CONFIG = require('../../../conf/server');
+const SERVER_CONFIG = require('../../../config/server');
 const JSON_PATH = SERVER_CONFIG.public.CONF_DIR + '/log4js.json';
 const LOG_DIR = SERVER_CONFIG.public.LOGS_DIR;
 

@@ -20,7 +20,7 @@ module.exports = {
     CLIENT_DIR: path.join(__dirname, '../client'),
 
     //配置路径
-    CONF_DIR: path.join(__dirname, '../conf'),
+    CONF_DIR: path.join(__dirname, '../config'),
 
     //网页模板路径
     VIEWS_DIR: path.join(__dirname, '../client/views'),

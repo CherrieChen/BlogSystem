@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const SERVER_CONFIG = require('../../../conf/server');
+const SERVER_CONFIG = require('../../../config/server');
 
 const CONFIG_DIR = SERVER_CONFIG.public.CONF_DIR;
 const NODE_ENV = SERVER_CONFIG.public.NODE_ENV;

@@ -34,35 +34,35 @@ app.use(bodyParser.urlencoded({
 // 解析cookies数据到req.cookies里面
 app.use(cookieParser());
 
-// 开发环境直接读取stylus
-if (NODE_ENV === 'development') {
-    const stylus = require('stylus');
-    const nib = require('nib');
-    app.use(stylus.middleware({
-        src: serverCfg.CLIENT_DIR,
-        dest: serverCfg.STATIC_DIR,
-        compile: function(str, path) {
-            return stylus(str)
-                .set('filename', path)
-                .define('url', stylus.url({
-                    paths: [serverCfg.STATIC_DIR]
-                }))
-                .define('$STATIC_PATH', localsCfg.STATIC_PATH)
-                .use(nib());
-        }
-    }));
-
-    //livereload
-    if (!serverCfg.livereload.disabled) {
-        const livereload = require('./livereload');
-        const options = Object.assign({}, serverCfg.livereload);
-        delete options.disabled;
-        app.use(livereload(options));
-    }
-}
+//// 开发环境直接读取stylus
+//if (NODE_ENV === 'development') {
+//    const stylus = require('stylus');
+//    const nib = require('nib');
+//    app.use(stylus.middleware({
+//        src: serverCfg.CLIENT_DIR,
+//        dest: serverCfg.STATIC_DIR,
+//        compile: function(str, path) {
+//            return stylus(str)
+//                .set('filename', path)
+//                .define('url', stylus.url({
+//                    paths: [serverCfg.STATIC_DIR]
+//                }))
+//                .define('$STATIC_PATH', localsCfg.STATIC_PATH)
+//                .use(nib());
+//        }
+//    }));
+//
+//    //livereload
+//    if (!serverCfg.livereload.disabled) {
+//        const livereload = require('./livereload');
+//        const options = Object.assign({}, serverCfg.livereload);
+//        delete options.disabled;
+//        app.use(livereload(options));
+//    }
+//}
 
 //静态文件目录
-app.use(express.static(serverCfg.STATIC_DIR));
+app.use('/public',express.static(serverCfg.STATIC_DIR));
 
 //添加路由
 const routes = require('./routes');
