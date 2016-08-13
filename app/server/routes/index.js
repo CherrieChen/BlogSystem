@@ -1,6 +1,6 @@
 'use strict';
 
-const service = require('../service/index');
+const service = require('../service/indexSer');
 
 module.exports = function(router) {
     //首页
