@@ -8,6 +8,7 @@
     "cookie-parser": "^1.4.3",
     "express": "~4.13.1",
     "log4js": "^0.6.38",
+    "mongoose": "^4.5.8",
     "serve-favicon": "^2.3.0"
   }
 }
