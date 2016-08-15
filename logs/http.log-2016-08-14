@@ -1,3 +1,0 @@
-[2016-08-15 21:12:09.810] [ERROR] http - ::1 - - "GET / HTTP/1.1" 500 1474 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36"
-[2016-08-15 21:14:54.928] [ERROR] http - ::1 - - "GET / HTTP/1.1" 500 1719 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36"
-[2016-08-15 21:18:39.354] [ERROR] http - ::1 - - "GET / HTTP/1.1" 500 1719 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36"
