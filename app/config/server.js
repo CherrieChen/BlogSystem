@@ -24,6 +24,7 @@ module.exports = {
 
     //网页模板路径
     VIEWS_DIR: path.join(__dirname, '../client/views'),
+    PARTIAL_DIR: path.join(__dirname, '../client/views/partials'),
 
     //日志文件
     LOGS_DIR: path.join(__dirname, '../../logs'),

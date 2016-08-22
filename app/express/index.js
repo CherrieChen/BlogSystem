@@ -5,6 +5,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const hbs = require('hbs');
 
 const logFactory = require('./../server/commons/factories/logFactory');
 const configuration = require('./../server/commons/factories/configuration');
@@ -15,8 +16,14 @@ const NODE_ENV = serverCfg.NODE_ENV;
 const app = express();
 
 // 模板引擎
-app.set('views', serverCfg.VIEWS_DIR);
-app.set('view engine', 'jade');
+//app.set('views', serverCfg.VIEWS_DIR);
+//app.set('view engine', 'jade');
+
+app.set('view engine', 'html');
+app.engine('html',hbs.__express);
+hbs.registerPartials(serverCfg.PARTIAL_DIR);
+//hbs.registerHelper('helper_name', function(...) { ... });
+
 
 app.use(favicon(path.join(serverCfg.STATIC_DIR, 'favicon.ico')));
 
