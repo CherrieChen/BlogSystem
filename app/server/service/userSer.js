@@ -1,25 +1,57 @@
 'use strict';
 const User = require('../model/userMod');
-module.exports.find = function(callback) {
-    User.find({}, function (err,datas) {
-        if(err){
-            console.log(err)
-        }
-        console.log(datas);
-        callback(err,datas);
-    })
+/**
+ * 根据用户名查找用户
+ * @param loginName
+ * @param callback
+ */
+
+module.exports.getUserByLoginName = function (loginName, callback) {
+    User.findOne({'name': new RegExp('^'+loginName+'$', "i")}, callback);
 };
-module.exports.add = function(callback) {
-    var user = new User();
-    user.name='ygy';
-    user.password = '123456';
-    user.email = '982883422@qq.com';
-    user.save(function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('suc');
-        }
-        callback(err,'suc');
-    });
+
+/**
+ * 根据用户ID，查找用户
+ * Callback:
+ * - err, 数据库异常
+ * - user, 用户
+ * @param {String} id 用户ID
+ * @param {Function} callback 回调函数
+ */
+module.exports.getUserById = function (id, callback) {
+    if (!id) {
+        return callback();
+    }
+    User.findOne({_id: id}, callback);
+};
+
+/**
+ * 根据邮箱，查找用户
+ * Callback:
+ * - err, 数据库异常
+ * - user, 用户
+ * @param {String} email 邮箱地址
+ * @param {Function} callback 回调函数
+ */
+
+
+module.exports.getUserByMail = function (email, callback) {
+    User.findOne({email: email}, callback);
+};
+
+/**
+ *用户注册方法
+ *
+ * @param name
+ * @param loginname
+ * @param pass
+ * @param email
+ * @param callback
+ */
+module.exports.newAndSave = function (name, pass, email, avatar_url, active, callback) {
+    var user         = new User();
+    user.name        = loginname;
+    user.password        = pass;
+    user.email       = email;
+    user.save(callback);
 };
