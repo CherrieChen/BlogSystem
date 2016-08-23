@@ -2,6 +2,17 @@
 const serviceUser = require('../service/userSer');
 module.exports = function(router) {
 
+    router.get("/login",function(req,res,next){
+        res.render('index',{},function(err,html){
+            console.log(err);
+            if(err){
+                res.send(err);
+            }
+            res.send(html);
+        });
+    });
+
+
     router.post("/login",function(req,res,next){
 
         var name, password;

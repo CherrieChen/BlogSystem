@@ -19,10 +19,28 @@ const app = express();
 //app.set('views', serverCfg.VIEWS_DIR);
 //app.set('view engine', 'jade');
 
-app.set('view engine', 'html');
-app.engine('html',hbs.__express);
+app.set('view engine', 'hbs');
+app.set('views', serverCfg.VIEWS_DIR);
 hbs.registerPartials(serverCfg.PARTIAL_DIR);
-//hbs.registerHelper('helper_name', function(...) { ... });
+
+//注册helper
+var blocks = {};
+hbs.registerHelper('extend', function(name, context) {
+    var block = blocks[name];
+    if (!block) {
+        block = blocks[name] = [];
+    }
+
+    block.push(context.fn(this)); // for older versions of handlebars, use block.push(context(this));
+});
+hbs.registerHelper('block', function(name) {
+    var val = (blocks[name] || []).join('\n');
+
+    // clear the block
+    blocks[name] = [];
+    return val;
+});
+
 
 
 app.use(favicon(path.join(serverCfg.STATIC_DIR, 'favicon.ico')));
